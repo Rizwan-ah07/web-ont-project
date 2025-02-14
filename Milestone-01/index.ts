@@ -1,4 +1,5 @@
 import * as readlineSync from 'readline-sync';
+import chalk from 'chalk';
 import { Pokemon } from './interfaces';
 
 const POKEMON_URL =
@@ -45,21 +46,23 @@ async function main() {
       const found = pokemonData.find(
         (p) => p.id.toLowerCase() === idInput.toLowerCase()
       );
-      
+
+      // chalk toegevoed om de data duidelijker te maken
       if (found) {
-        console.log(`\n${found.name} (${found.id})`);
-        console.log(`  Description: ${found.description}`);
-        console.log(`  Age: ${found.age}`);
-        console.log(`  Active: ${found.isActive}`);
-        console.log(`  Birthdate: ${found.birthDate}`);
-        console.log(`  Image: ${found.imageUrl}`);
-        console.log(`  Rarity: ${found.rarity}`);
-        console.log(`  Abilities: ${found.abilities.join(', ')}`);
-        console.log('  Trainer:');
-        console.log(`    Name: ${found.trainerAffiliation.name}`);
-        console.log(`    Region: ${found.trainerAffiliation.region}`);
-        console.log(`    Image: ${found.trainerAffiliation.imageUrl}`);
-      } else {
+        console.log(chalk.magenta(`\n${found.name} (${found.id})`));
+        console.log(chalk.magenta(`  Description:`) + chalk.white(` ${found.description}`));
+        console.log(chalk.magenta(`  Age:`) + chalk.white(` ${found.age}`));
+        console.log(chalk.magenta(`  Active:`) + chalk.white(` ${found.isActive}`));
+        console.log(chalk.magenta(`  Birthdate:`) + chalk.white(` ${found.birthDate}`));
+        console.log(chalk.magenta(`  Image:`) + chalk.white(` ${found.imageUrl}`));
+        console.log(chalk.magenta(`  Rarity:`) + chalk.white(` ${found.rarity}`));
+        console.log(chalk.magenta(`  Abilities:`) + chalk.white(` ${found.abilities.join(', ')}`));
+        console.log(chalk.magenta('  Trainer:'));
+        console.log(chalk.magenta(`    Name:`) + chalk.white(` ${found.trainerAffiliation.name}`));
+        console.log(chalk.magenta(`    Region:`) + chalk.white(` ${found.trainerAffiliation.region}`));
+        console.log(chalk.magenta(`    Image:`) + chalk.white(` ${found.trainerAffiliation.imageUrl}`));
+      }
+       else {
         console.log(`\nNo Pokémon found with ID: ${idInput}`);
       }
       
