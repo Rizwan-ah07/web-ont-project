@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Trainer Overview</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <%- include('partials/navbar') %>
+  <div class="container">
+    <h1>Trainer Overview</h1>
+    
+    <!-- Filter and Hide Fields Form -->
+    <form action="/trainer" method="get">
+      <label for="filterName">Filter by Name:</label>
+      <input type="text" id="filterName" name="filterName" value="<%= filterName %>">
+      
+      <label for="hiddenFields">Hide Fields (comma-separated, e.g. description,age):</label>
+      <input type="text" id="hiddenFields" name="hiddenFields" value="<%= hiddenFields.join(',') %>">
+      
+      <button type="submit">Apply</button>
+    </form>
+    
+    <!-- Trainers Table with Clickable Sorting Headers -->
+    <table>
+      <thead>
+        <tr>
+          <% if (!hiddenFields.includes('id')) { %>
+            <th>
+              <a href="/trainer?<%= "filterName=" + encodeURIComponent(filterName) +
+                      "&sortField=id&sortDirection=" + ((sortField === 'id' && sortDirection === 'asc') ? 'desc' : 'asc') +
+                      "&hiddenFields=" + encodeURIComponent(hiddenFields.join(',')) %>">
+                ID<% if (sortField === 'id') { %> <%= sortDirection === 'asc' ? '▲' : '▼' %><% } %>
+              </a>
+            </th>
+          <% } %>
+          <% if (!hiddenFields.includes('name')) { %>
+            <th>
+              <a href="/trainer?<%= "filterName=" + encodeURIComponent(filterName) +
+                      "&sortField=name&sortDirection=" + ((sortField === 'name' && sortDirection === 'asc') ? 'desc' : 'asc') +
+                      "&hiddenFields=" + encodeURIComponent(hiddenFields.join(',')) %>">
+                Name<% if (sortField === 'name') { %> <%= sortDirection === 'asc' ? '▲' : '▼' %><% } %>
+              </a>
+            </th>
+          <% } %>
+          <% if (!hiddenFields.includes('region')) { %>
+            <th>
+              <a href="/trainer?<%= "filterName=" + encodeURIComponent(filterName) +
+                      "&sortField=region&sortDirection=" + ((sortField === 'region' && sortDirection === 'asc') ? 'desc' : 'asc') +
+                      "&hiddenFields=" + encodeURIComponent(hiddenFields.join(',')) %>">
+                Region<% if (sortField === 'region') { %> <%= sortDirection === 'asc' ? '▲' : '▼' %><% } %>
+              </a>
+            </th>
+          <% } %>
+          <% if (!hiddenFields.includes('age')) { %>
+            <th>
+              <a href="/trainer?<%= "filterName=" + encodeURIComponent(filterName) +
+                      "&sortField=age&sortDirection=" + ((sortField === 'age' && sortDirection === 'asc') ? 'desc' : 'asc') +
+                      "&hiddenFields=" + encodeURIComponent(hiddenFields.join(',')) %>">
+                Age<% if (sortField === 'age') { %> <%= sortDirection === 'asc' ? '▲' : '▼' %><% } %>
+              </a>
+            </th>
+          <% } %>
+          <th>Details</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% trainers.forEach(trainer => { %>
+          <tr>
+            <% if (!hiddenFields.includes('id')) { %>
+              <td><%= trainer.id %></td>
+            <% } %>
+            <% if (!hiddenFields.includes('name')) { %>
+              <td><%= trainer.name %></td>
+            <% } %>
+            <% if (!hiddenFields.includes('region')) { %>
+              <td><%= trainer.region %></td>
+            <% } %>
+            <% if (!hiddenFields.includes('age')) { %>
+              <td><%= trainer.age %></td>
+            <% } %>
+            <td>
+              <a href="/trainer/<%= trainer.id %>">View Details</a>
+            </td>
+          </tr>
+        <% }); %>
+      </tbody>
+    </table>
+  </div>
+</body>
+</html>

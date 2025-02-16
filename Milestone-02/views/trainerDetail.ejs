@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Trainer Detail - <%= trainer.name %></title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <%- include('partials/navbar') %>
+  <div class="container">
+    <h1>Trainer Detail: <%= trainer.name %> (<%= trainer.id %>)</h1>
+    
+    <img src="<%= trainer.imageUrl %>" alt="<%= trainer.name %>" width="150">
+    <p><strong>Description:</strong> <%= trainer.description %></p>
+    <p><strong>Age:</strong> <%= trainer.age %></p>
+    <p><strong>Active:</strong> <%= trainer.isActive %></p>
+    <p><strong>Birthdate:</strong> <%= trainer.birthDate %></p>
+    <p><strong>Region:</strong> <%= trainer.region %></p>
+    <p><strong>Hobbies:</strong> <%= trainer.hobbies.join(', ') %></p>
+    
+    <a href="/trainer">Back to Trainer Overview</a>
+  </div>
+</body>
+</html>
