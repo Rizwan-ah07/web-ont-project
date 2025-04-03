@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Trainer Overview</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <%- include('partials/navbar') %>
+  <div class="container">
+    <h1>Trainer Overview</h1>
+    
+    <!-- Filter Form -->
+    <form action="/trainer" method="get">
+      <label for="filterName">Filter by Name:</label>
+      <input type="text" id="filterName" name="filterName" value="<%= filterName %>">
+      <button type="submit">Apply</button>
+    </form>
+    
+    <!-- Trainers Table with Clickable Sorting Headers -->
+    <table>
+      <thead>
+        <tr>
+          <th>
+            <a href="/trainer?<%= "filterName=" + encodeURIComponent(filterName) +
+                    "&sortField=id&sortDirection=" + ((sortField === 'id' && sortDirection === 'asc') ? 'desc' : 'asc') %>">
+              ID<% if (sortField === 'id') { %> <%= sortDirection === 'asc' ? '▲' : '▼' %><% } %>
+            </a>
+          </th>
+          <th>
+            <a href="/trainer?<%= "filterName=" + encodeURIComponent(filterName) +
+                    "&sortField=name&sortDirection=" + ((sortField === 'name' && sortDirection === 'asc') ? 'desc' : 'asc') %>">
+              Name<% if (sortField === 'name') { %> <%= sortDirection === 'asc' ? '▲' : '▼' %><% } %>
+            </a>
+          </th>
+          <th>
+            <a href="/trainer?<%= "filterName=" + encodeURIComponent(filterName) +
+                    "&sortField=region&sortDirection=" + ((sortField === 'region' && sortDirection === 'asc') ? 'desc' : 'asc') %>">
+              Region<% if (sortField === 'region') { %> <%= sortDirection === 'asc' ? '▲' : '▼' %><% } %>
+            </a>
+          </th>
+          <th>
+            <a href="/trainer?<%= "filterName=" + encodeURIComponent(filterName) +
+                    "&sortField=age&sortDirection=" + ((sortField === 'age' && sortDirection === 'asc') ? 'desc' : 'asc') %>">
+              Age<% if (sortField === 'age') { %> <%= sortDirection === 'asc' ? '▲' : '▼' %><% } %>
+            </a>
+          </th>
+          <th>Details</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% trainers.forEach(trainer => { %>
+          <tr>
+            <td><%= trainer.id %></td>
+            <td><%= trainer.name %></td>
+            <td><%= trainer.region %></td>
+            <td><%= trainer.age %></td>
+            <td>
+              <a href="/trainer/<%= trainer.id %>">View Details</a>
+            </td>
+          </tr>
+        <% }); %>
+      </tbody>
+    </table>
+  </div>
+</body>
+</html>

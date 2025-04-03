@@ -1,0 +1,164 @@
+/* CSS Reset */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Custom Properties */
+:root {
+  --primary: #6a0dad;         
+  --secondary: #7b1fa2;       
+  --accent: #d1c4e9;         
+  --bg: #1c0030;        
+  --container-bg: rgba(0, 0, 0, 0.5);
+  --text-color: #e0e0e0;       
+  --border-color: rgba(255, 255, 255, 0.1);
+  --hover-color: #a4508b;    
+  --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Body Styling */
+body {
+  font-family: var(--font-family);
+  background: var(--bg);
+  color: var(--text-color);
+  line-height: 1.6;
+  font-size: 16px;
+}
+
+/* Container */
+.container {
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 30px;
+  background: var(--container-bg);
+  border-radius: 8px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
+}
+
+/* Navigation Bar */
+nav {
+  background: linear-gradient(90deg, var(--primary), var(--secondary));
+  padding: 15px 0;
+  text-align: center;
+  margin-bottom: 30px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+}
+
+nav a {
+  color: var(--text-color);
+  text-decoration: none;
+  margin: 0 20px;
+  font-size: 1.2em;
+  transition: color 0.3s;
+}
+
+nav a:hover {
+  color: var(--accent);
+}
+
+h1, h2, h3, h4, h5 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #ffffff;
+}
+
+/* Forms */
+form {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 30px;
+}
+
+form label {
+  color: var(--accent);
+  font-weight: bold;
+}
+
+form input[type="text"],
+form select {
+  padding: 10px 15px;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  background: #2d0031;
+  color: var(--text-color);
+  transition: border-color 0.3s;
+}
+
+form input[type="text"]:focus,
+form select:focus {
+  border-color: var(--accent);
+}
+
+form button {
+  background: var(--primary);
+  border: none;
+  padding: 10px 20px;
+  color: var(--text-color);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+form button:hover {
+  background: var(--hover-color);
+}
+
+/* Table Styling */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+table th,
+table td {
+  padding: 15px;
+  text-align: left;
+  border: 1px solid var(--border-color);
+}
+
+table th, table th a {
+  background: var(--primary);
+  color: var(--text-color);
+  font-weight: bold;
+}
+
+table tbody tr:nth-child(odd) {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+table tbody tr:nth-child(even) {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+table tbody tr:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+/* Links */
+a {
+  color: var(--primary);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+a:hover {
+  color: var(--accent);
+}
+
+/* Images */
+img {
+  max-width: 100%;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.7);
+}
+
+/* Utility Classes */
+.text-center {
+  text-align: center;
+}

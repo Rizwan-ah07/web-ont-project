@@ -29,4 +29,3 @@ export interface TrainerAffiliation {
     region: string;
     hobbies: string[];
   }
-  

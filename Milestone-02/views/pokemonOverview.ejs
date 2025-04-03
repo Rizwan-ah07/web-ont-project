@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Pokémon Overview</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <%- include('partials/navbar') %>
+  <div class="container">
+    <h1>Pokémon Overview</h1>
+    
+    <!-- Filter and Sort Form -->
+    <form action="/pokemon" method="get">
+      <label for="filterName">Filter by Name:</label>
+      <input type="text" id="filterName" name="filterName" value="<%= filterName %>">   
+      
+      <button type="submit">Apply</button>
+    </form>
+    
+    <!-- Pokémon Table with Clickable Headers for Sorting -->
+    <table>
+      <thead>
+        <tr>
+          <th>
+            <a href="/pokemon?<%= "filterName=" + encodeURIComponent(filterName) +
+                  "&sortField=id&sortDirection=" + ((sortField === 'id' && sortDirection === 'asc') ? 'desc' : 'asc') %>">
+              ID<% if (sortField === 'id') { %> <%= sortDirection === 'asc' ? '▲' : '▼' %><% } %>
+            </a>
+          </th>
+          <th>
+            <a href="/pokemon?<%= "filterName=" + encodeURIComponent(filterName) +
+                  "&sortField=name&sortDirection=" + ((sortField === 'name' && sortDirection === 'asc') ? 'desc' : 'asc') %>">
+              Name<% if (sortField === 'name') { %> <%= sortDirection === 'asc' ? '▲' : '▼' %><% } %>
+            </a>
+          </th>
+          <th>
+            <a href="/pokemon?<%= "filterName=" + encodeURIComponent(filterName) +
+                  "&sortField=description&sortDirection=" + ((sortField === 'description' && sortDirection === 'asc') ? 'desc' : 'asc') %>">
+              Description<% if (sortField === 'description') { %> <%= sortDirection === 'asc' ? '▲' : '▼' %><% } %>
+            </a>
+          </th>
+          <th>
+            <a href="/pokemon?<%= "filterName=" + encodeURIComponent(filterName) +
+                  "&sortField=age&sortDirection=" + ((sortField === 'age' && sortDirection === 'asc') ? 'desc' : 'asc') %>">
+              Age<% if (sortField === 'age') { %> <%= sortDirection === 'asc' ? '▲' : '▼' %><% } %>
+            </a>
+          </th>
+          <th>
+            <a href="/pokemon?<%= "filterName=" + encodeURIComponent(filterName) +
+                  "&sortField=rarity&sortDirection=" + ((sortField === 'rarity' && sortDirection === 'asc') ? 'desc' : 'asc') %>">
+              Rarity<% if (sortField === 'rarity') { %> <%= sortDirection === 'asc' ? '▲' : '▼' %><% } %>
+            </a>
+          </th>
+          <th>
+            <a href="/pokemon?<%= "filterName=" + encodeURIComponent(filterName) +
+                  "&sortField=trainer&sortDirection=" + ((sortField === 'trainer' && sortDirection === 'asc') ? 'desc' : 'asc') %>">
+              Trainer<% if (sortField === 'trainer') { %> <%= sortDirection === 'asc' ? '▲' : '▼' %><% } %>
+            </a>
+          </th>
+          <th>Details</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% pokemons.forEach(pokemon => { %>
+          <tr>
+            <td><%= pokemon.id %></td>
+            <td><%= pokemon.name %></td>
+            <td><%= pokemon.description %></td>
+            <td><%= pokemon.age %></td>
+            <td><%= pokemon.rarity %></td>
+            <td><%= pokemon.trainerAffiliation.name %></td>
+            <td><a href="/pokemon/<%= pokemon.id %>">View Details</a></td>
+          </tr>
+        <% }); %>
+      </tbody>
+    </table>
+  </div>
+</body>
+</html>
