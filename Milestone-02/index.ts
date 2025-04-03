@@ -91,17 +91,13 @@ app.get("/pokemon", async (req, res) => {
     return 0;
   });
 
-  // Hidden fields (comma-separated list from query parameter "hiddenFields")
-  const hiddenFields = req.query.hiddenFields
-    ? String(req.query.hiddenFields).split(",").map(f => f.trim())
-    : [];
+
 
   res.render("pokemonOverview", {
     pokemons,
     filterName,
     sortField,
-    sortDirection,
-    hiddenFields,
+    sortDirection
   });
 });
 
@@ -153,16 +149,11 @@ app.get("/trainer", async (req, res) => {
     return 0;
   });
 
-  const hiddenFields = req.query.hiddenFields
-    ? String(req.query.hiddenFields).split(",").map(f => f.trim())
-    : [];
-
   res.render("trainerOverview", {
     trainers,
     filterName,
     sortField,
-    sortDirection,
-    hiddenFields,
+    sortDirection
   });
 });
 
