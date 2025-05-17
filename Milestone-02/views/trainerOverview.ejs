@@ -9,15 +9,13 @@
   <%- include('partials/navbar') %>
   <div class="container">
     <h1>Trainer Overview</h1>
-    
-    <!-- Filter Form -->
+
     <form action="/trainer" method="get">
       <label for="filterName">Filter by Name:</label>
       <input type="text" id="filterName" name="filterName" value="<%= filterName %>">
       <button type="submit">Apply</button>
     </form>
-    
-    <!-- Trainers Table with Clickable Sorting Headers -->
+
     <table>
       <thead>
         <tr>

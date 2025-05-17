@@ -10,15 +10,13 @@
   <div class="container">
     <h1>Pokémon Overview</h1>
     
-    <!-- Filter and Sort Form -->
+
     <form action="/pokemon" method="get">
       <label for="filterName">Filter by Name:</label>
       <input type="text" id="filterName" name="filterName" value="<%= filterName %>">   
       
       <button type="submit">Apply</button>
-    </form>
-    
-    <!-- Pokémon Table with Clickable Headers for Sorting -->
+    </form> 
     <table>
       <thead>
         <tr>

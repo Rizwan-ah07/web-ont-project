@@ -1,24 +1,16 @@
-/* CSS Reset */
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
 
-/* Custom Properties */
 :root {
-  --primary: #6a0dad;         
-  --secondary: #7b1fa2;       
-  --accent: #d1c4e9;         
-  --bg: #1c0030;        
+  --primary: #6a0dad;     
+  --secondary: #7b1fa2;      
+  --accent: #d1c4e9;        
+  --bg: #1c0030;             
   --container-bg: rgba(0, 0, 0, 0.5);
-  --text-color: #e0e0e0;       
-  --border-color: rgba(255, 255, 255, 0.1);
-  --hover-color: #a4508b;    
+  --text-color: #e0e0e0;      
+  --border-color: rgba(255, 255, 255, 0.2);
+  --hover-color: #a4508b;     
   --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-/* Body Styling */
 body {
   font-family: var(--font-family);
   background: var(--bg);
@@ -27,7 +19,6 @@ body {
   font-size: 16px;
 }
 
-/* Container */
 .container {
   max-width: 1200px;
   margin: 40px auto;
@@ -37,7 +28,6 @@ body {
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
 }
 
-/* Navigation Bar */
 nav {
   background: linear-gradient(90deg, var(--primary), var(--secondary));
   padding: 15px 0;
@@ -50,7 +40,7 @@ nav a {
   color: var(--text-color);
   text-decoration: none;
   margin: 0 20px;
-  font-size: 1.2em;
+  font-size: 1.1em;
   transition: color 0.3s;
 }
 
@@ -64,13 +54,13 @@ h1, h2, h3, h4, h5 {
   color: #ffffff;
 }
 
-/* Forms */
 form {
   display: flex;
+  flex-direction: row;
   flex-wrap: wrap;
+  gap: 10px;
   justify-content: center;
   align-items: center;
-  gap: 10px;
   margin-bottom: 30px;
 }
 
@@ -80,6 +70,8 @@ form label {
 }
 
 form input[type="text"],
+form input[type="email"],
+form input[type="password"],
 form select {
   padding: 10px 15px;
   border: 1px solid var(--border-color);
@@ -90,11 +82,14 @@ form select {
 }
 
 form input[type="text"]:focus,
+form input[type="email"]:focus,
+form input[type="password"]:focus,
 form select:focus {
   border-color: var(--accent);
 }
 
-form button {
+form button,
+form input[type="submit"] {
   background: var(--primary);
   border: none;
   padding: 10px 20px;
@@ -104,11 +99,11 @@ form button {
   transition: background 0.3s;
 }
 
-form button:hover {
+form button:hover,
+form input[type="submit"]:hover {
   background: var(--hover-color);
 }
 
-/* Table Styling */
 table {
   width: 100%;
   border-collapse: collapse;
@@ -122,10 +117,15 @@ table td {
   border: 1px solid var(--border-color);
 }
 
-table th, table th a {
+table th {
   background: var(--primary);
   color: var(--text-color);
   font-weight: bold;
+}
+
+table th a {
+  color: var(--text-color);
+  text-decoration: none;
 }
 
 table tbody tr:nth-child(odd) {
@@ -140,7 +140,6 @@ table tbody tr:hover {
   background: rgba(255, 255, 255, 0.15);
 }
 
-/* Links */
 a {
   color: var(--primary);
   text-decoration: none;
@@ -151,14 +150,163 @@ a:hover {
   color: var(--accent);
 }
 
-/* Images */
 img {
   max-width: 100%;
   border-radius: 8px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.7);
 }
 
-/* Utility Classes */
 .text-center {
   text-align: center;
+}
+
+#loginSection, #registerSection {
+  max-width: 400px;
+  margin: 50px auto;
+  background: var(--container-bg);
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.7);
+}
+
+#loginSection h1, #registerSection h1 {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+#loginSection form,
+#registerSection form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+#loginSection input[type="email"],
+#loginSection input[type="password"],
+#registerSection input[type="email"],
+#registerSection input[type="password"] {
+  padding: 10px;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  background: #2d0031;
+  color: var(--text-color);
+}
+
+#loginSection input[type="submit"],
+#registerSection input[type="submit"] {
+  background: var(--primary);
+  border: none;
+  padding: 10px;
+  color: var(--text-color);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+#loginSection input[type="submit"]:hover,
+#registerSection input[type="submit"]:hover {
+  background: var(--hover-color);
+}
+
+.card-edit-main {
+  display: flex;
+  justify-content: center;
+  padding: 2rem 1rem;
+}
+.card-edit-section {
+  width: 100%;
+  max-width: 600px;
+}
+
+.card-edit-form {
+  background: var(--container-bg);
+  padding: 2rem;
+  border-radius: 0 0 8px 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.7);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.card-edit-form:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.7);
+}
+
+.card-edit-fieldset {
+  border: none;
+  margin-bottom: 1.5rem;
+}
+.card-edit-legend {
+  font-size: 1.25rem;
+  color: var(--accent);
+  margin-bottom: 1rem;
+  font-weight: bold;
+}
+
+.form-group {
+  margin-bottom: 1.25rem;
+}
+.card-edit-label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: var(--accent);
+  font-weight: bold;
+}
+
+.card-edit-input,
+.card-edit-textarea,
+.card-edit-select {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  font-family: inherit;
+  background: #2d0031;
+  color: var(--text-color);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+.card-edit-input:focus,
+.card-edit-textarea:focus,
+.card-edit-select:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(209, 196, 233, 0.4);
+  outline: none;
+}
+.card-edit-textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.card-edit-form {
+  display: flex;             
+  flex-direction: column;    
+}
+
+.card-edit-footer {
+  margin-top: 2rem;           
+  text-align: right;         
+}
+.card-edit-button {
+  background: var(--primary);
+  color: var(--text-color);
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+}
+.card-edit-button:hover {
+  background: var(--hover-color);
+  transform: translateY(-2px);
+}
+.card-edit-button:active {
+  transform: translateY(0);
+}
+
+@media (max-width: 480px) {
+  .card-edit-form {
+    padding: 1.5rem;
+  }
+  .card-edit-header h1 {
+    font-size: 1.5rem;
+  }
 }

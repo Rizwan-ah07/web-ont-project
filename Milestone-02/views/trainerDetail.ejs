@@ -17,6 +17,21 @@
     <p><strong>Birthdate:</strong> <%= trainer.birthDate %></p>
     <p><strong>Region:</strong> <%= trainer.region %></p>
     <p><strong>Hobbies:</strong> <%= trainer.hobbies.join(', ') %></p>
+
+    <% if (pokemonsForTrainer && pokemonsForTrainer.length > 0) { %>
+      <h2>Pokémon caught by <%= trainer.name %>:</h2>
+      <ul>
+        <% pokemonsForTrainer.forEach(pokemon => { %>
+          <li>
+            <a href="/pokemon/<%= pokemon.id %>">
+              <%= pokemon.name %> (<%= pokemon.id %>)
+            </a>
+          </li>
+        <% }) %>
+      </ul>
+    <% } else { %>
+      <p><em>No Pokémon found for this trainer.</em></p>
+    <% } %>
     
     <a href="/trainer">Back to Trainer Overview</a>
   </div>
