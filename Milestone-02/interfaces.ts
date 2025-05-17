@@ -1,3 +1,5 @@
+import { ObjectId } from "mongodb";
+
 export interface TrainerAffiliation {
     id: string;
     name: string;
@@ -29,3 +31,11 @@ export interface TrainerAffiliation {
     region: string;
     hobbies: string[];
   }
+
+  export interface User{
+    _id?: ObjectId;
+    role : "ADMIN" | "USER";
+    email : string;
+    password? : string;
+  }
+  

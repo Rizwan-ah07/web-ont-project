@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Pokémon Details</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="js/script.js" defer></script>
+</head>
+<body>
+    <%- include('partials/navbar') %>
+    <header class="card-edit-header">
+        <h1>Edit Pokémon Details</h1>
+    </header>
+    <main class="card-edit-main">
+        <section class="card-edit-section">
+            <form action="/pokemon/<%= pokemon.id %>/edit" method="post" class="card-edit-form">
+                <fieldset class="card-edit-fieldset">
+                    <legend class="card-edit-legend">Pokémon Information</legend>
+                    <div class="form-group">
+                        <label for="name" class="card-edit-label">Name:</label>
+                        <input type="text" id="name" name="name" value="<%= pokemon.name %>" required class="card-edit-input">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="description" class="card-edit-label">Description:</label>
+                        <textarea id="description" name="description" required class="card-edit-textarea"><%= pokemon.description %></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="age" class="card-edit-label">Age:</label>
+                        <input type="number" id="age" name="age" value="<%= pokemon.age %>" required class="card-edit-input">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="imageUrl" class="card-edit-label">Image URL:</label>
+                        <input type="text" id="imageUrl" name="imageUrl" value="<%= pokemon.imageUrl %>" required class="card-edit-input">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="rarity" class="card-edit-label">Rarity:</label>
+                        <select id="rarity" name="rarity" required class="card-edit-select">
+                            <option value="Common" <%= pokemon.rarity === 'Common' ? 'selected' : '' %>>Common</option>
+                            <option value="Uncommon" <%= pokemon.rarity === 'Uncommon' ? 'selected' : '' %>>Uncommon</option>
+                            <option value="Rare" <%= pokemon.rarity === 'Rare' ? 'selected' : '' %>>Rare</option>
+                            <option value="Ultra Rare" <%= pokemon.rarity === 'Ultra Rare' ? 'selected' : '' %>>Ultra Rare</option>
+                        </select>
+                    </div>
+                </fieldset>
+
+                <footer class="card-edit-footer">
+                    <button type="submit" class="card-edit-button">Save Changes</button>
+                </footer>
+            </form>
+        </section>
+    </main>
+</body>
+</html>
