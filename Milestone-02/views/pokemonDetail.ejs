@@ -29,8 +29,10 @@
     <% } %>
     
     <a href="/pokemon">Back to Pokémon Overview</a>
-    <br>
-    <a href="/pokemon/<%= pokemon.id %>/edit" class="edit-link">Edit Card</a>
+    <% if (typeof user !== 'undefined' && user.role === 'ADMIN') { %>
+      <br>
+      <a href="/pokemon/<%= pokemon.id %>/edit" class="edit-link">Edit Pokémon</a>
+    <% } %>
   </div>
 </body>
 </html>
