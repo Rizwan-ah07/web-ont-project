@@ -17,39 +17,13 @@ const pokemonUrl = "https://raw.githubusercontent.com/Rizwan-ah07/web-ont-json/r
 const trainerUrl = "https://raw.githubusercontent.com/Rizwan-ah07/web-ont-json/refs/heads/main/trainers.json";
 
 
-
-export async function getAllPokemons() {
-  return await PokemonCollection.find().toArray();
+async function fetchData<T>(url: string): Promise<T> {
+  const response = await fetch(url);
+  if (!response.ok) {
+    throw new Error(`Failed to fetch data: ${response.statusText}`);
+  }
+  return (await response.json()) as T;
 }
-
-export async function findPokemonByName(name: string) {
-  return await PokemonCollection.findOne({ name });
-}
-
-export async function findPokemonById(id: ObjectId) {
-  return await PokemonCollection.findOne({ _id: id });
-}
-
-export async function getAllTrainers() {
-  return await TrainerCollection.find().toArray();
-}
-
-export async function findTrainerByName(name: string) {
-  return await TrainerCollection.findOne({ name });
-}
-
-export async function findTrainerById(id: ObjectId) {
-  return await TrainerCollection.findOne({ _id: id });
-}
-
-export async function updatePokemonById(id: ObjectId, updateData: Partial<Pokemon>) {
-    return await PokemonCollection.updateOne({ _id: id }, { $set: updateData });
-}
-
-export async function findUserByEmail(email: string) {
-    return await UserCollection.findOne({ email: email });
-}
-
 
 async function createInitialUsers() {
     if (await UserCollection.countDocuments() > 0) { return; }
@@ -132,14 +106,6 @@ export async function loadDataToTheDatabase() {
   }
 }
 
-async function fetchData<T>(url: string): Promise<T> {
-  const response = await fetch(url);
-  if (!response.ok) {
-    throw new Error(`Failed to fetch data: ${response.statusText}`);
-  }
-  return (await response.json()) as T;
-}
-
 export async function getSortedPokemons(
   sortField: string,
   sortDirection: "asc" | "desc",
@@ -163,15 +129,38 @@ export async function getSortedTrainers(
     .toArray();
 }
 
-async function exit() {
-  try {
-    await client.close();
-    console.log("Disconnected from database");
-  } catch (error) {
-    console.error(error);
-  }
-  process.exit(0);
+export async function getAllPokemons() {
+  return await PokemonCollection.find().toArray();
 }
+
+export async function findPokemonByName(name: string) {
+  return await PokemonCollection.findOne({ name });
+}
+
+export async function findPokemonById(id: ObjectId) {
+  return await PokemonCollection.findOne({ _id: id });
+}
+
+export async function getAllTrainers() {
+  return await TrainerCollection.find().toArray();
+}
+
+export async function findTrainerByName(name: string) {
+  return await TrainerCollection.findOne({ name });
+}
+
+export async function findTrainerById(id: ObjectId) {
+  return await TrainerCollection.findOne({ _id: id });
+}
+
+export async function updatePokemonById(id: ObjectId, updateData: Partial<Pokemon>) {
+    return await PokemonCollection.updateOne({ _id: id }, { $set: updateData });
+}
+
+export async function findUserByEmail(email: string) {
+    return await UserCollection.findOne({ email: email });
+}
+
 
 export async function connect() {
   try {
@@ -183,4 +172,14 @@ export async function connect() {
   } catch (error) {
     console.error("Error connecting to MongoDB: " + error);
   }
+}
+
+async function exit() {
+  try {
+    await client.close();
+    console.log("Disconnected from database");
+  } catch (error) {
+    console.error(error);
+  }
+  process.exit(0);
 }

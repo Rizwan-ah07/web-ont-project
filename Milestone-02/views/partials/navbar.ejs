@@ -1,7 +1,16 @@
 <nav>
+  <div class="nav-links">
     <a href="/">Home</a>
     <a href="/pokemon">Pokémon Overview</a>
     <a href="/trainer">Trainer Overview</a>
-  </nav>
-  <hr>
-  
+  </div>
+  <% if (typeof user !== 'undefined') { %>
+    <div class="user-info">
+      <span class="user-email"><%= user.email %></span>
+      <form action="/logout" method="post" class="logout-form">
+        <button type="submit" class="logout-button">Logout</button>
+      </form>
+    </div>
+  <% } %>
+</nav>
+<hr>

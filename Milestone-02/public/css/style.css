@@ -310,3 +310,48 @@ img {
     font-size: 1.5rem;
   }
 }
+
+/* Add to your /workspaces/web-ont-project/Milestone-02/public/css/style.css */
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(90deg, var(--primary), var(--secondary));
+  padding: 15px 20px;
+  margin-bottom: 30px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+}
+
+.nav-links {
+  display: flex;
+  gap: 20px;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.user-email {
+  color: var(--accent);
+  font-weight: bold;
+}
+
+.logout-form {
+  margin: 0;
+}
+
+.logout-button {
+  background-color: rgba(255, 255, 255, 0.2);
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.logout-button:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+}

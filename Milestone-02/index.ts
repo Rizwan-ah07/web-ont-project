@@ -1,10 +1,9 @@
 import express, { Express, Request, Response } from "express";
 import dotenv from "dotenv";
 import path from "path";
-import { Pokemon, Trainer } from "./interfaces";
-import { connect, getAllPokemons, getAllTrainers, login, register, PokemonCollection, TrainerCollection, getSortedPokemons, getSortedTrainers } from "./database";
-import session from "express-session";
-import { secureMiddleware, checkLogin, ensureAdmin } from "./middleware/secureMiddleware";
+import { Pokemon } from "./interfaces";
+import { connect, getAllPokemons, getAllTrainers, login, register, PokemonCollection, getSortedPokemons, getSortedTrainers } from "./database";
+import { secureMiddleware, ensureAdmin } from "./middleware/secureMiddleware";
 import { loginRouter } from "./routers/loginRouter";
 import { registerRouter } from "./routers/registerRouter";
 dotenv.config();
