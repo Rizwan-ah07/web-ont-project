@@ -164,6 +164,9 @@ app.post("/register", async (req: Request, res: Response) => {
     }
 });
 
+app.use((req: Request, res: Response) => {
+  res.redirect("/");
+});
 
 app.listen(app.get("port"), async () => {
   await connect();
